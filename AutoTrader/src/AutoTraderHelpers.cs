@@ -76,6 +76,24 @@ namespace AutoTrader
             return false;
         }
 
+        /// <summary>
+        /// A horse that can be ridden (not a pack animal), of any quality.
+        /// </summary>
+        public static bool IsRidingHorse(ItemObject itemObject)
+        {
+            return itemObject != null && itemObject.HasHorseComponent && itemObject.HorseComponent.IsMount && !itemObject.HorseComponent.IsPackAnimal;
+        }
+
+        public static bool IsWarMount(ItemObject itemObject)
+        {
+            return IsRidingHorse(itemObject) && itemObject.ItemCategory != null && itemObject.ItemCategory.StringId == "war_horse";
+        }
+
+        public static bool IsNobleMount(ItemObject itemObject)
+        {
+            return IsRidingHorse(itemObject) && itemObject.ItemCategory != null && itemObject.ItemCategory.StringId == "noble_horse";
+        }
+
         public static bool IsHorse(ItemObject itemObject)
         {
             if (itemObject.ItemType == ItemObject.ItemTypeEnum.Horse)
@@ -115,9 +133,19 @@ namespace AutoTrader
 
         public static bool IsLivestock(ItemObject itemObject)
         {
-            if (itemObject.IsAnimal)
+            if (itemObject == null)
+                return false;
+
+            // Horses (mounts and pack animals) have their own category
+            if (IsHorse(itemObject))
+                return false;
+
+            // Any animal sold as a trade good counts as livestock, including modded ones
+            if (itemObject.ItemType == ItemObject.ItemTypeEnum.Animal)
                 return true;
-            return false;
+
+            // Fallback for animals defined only through their HorseComponent
+            return itemObject.HasHorseComponent && itemObject.HorseComponent.IsLiveStock;
         }
     }
 }

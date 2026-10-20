@@ -126,8 +126,9 @@ namespace AutoTrader.Warsails
         /// Uses reflection to call NavalDLC.GameComponents.NavalDLCInventoryCapacityModel.CalculateTotalWeightCarried().
         /// </summary>
         /// <param name="mobileParty">The mobile party to calculate weight for</param>
+        /// <param name="isFleet">True to calculate the weight as carried by the fleet (this includes a Cargo Holds hold)</param>
         /// <returns>Total weight carried including fleet cargo, or 0 if Warsails DLC is not available</returns>
-        public static float GetFleetTotalWeightCarried(MobileParty mobileParty)
+        public static float GetFleetTotalWeightCarried(MobileParty mobileParty, bool isFleet = false)
         {
             try
             {
@@ -148,8 +149,8 @@ namespace AutoTrader.Warsails
                     return 0;
                 }
 
-                // Call the method: CalculateTotalWeightCarried(mobileParty, false, false)
-                var parameters = new object[] { mobileParty, false, false };
+                // Call the method: CalculateTotalWeightCarried(mobileParty, isFleet, false)
+                var parameters = new object[] { mobileParty, isFleet, false };
                 var result = calculateMethod.Invoke(currentModel, parameters);
                 
                 if (result == null)

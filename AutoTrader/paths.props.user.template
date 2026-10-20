@@ -18,5 +18,10 @@
     <!-- <BannerlordNativeModulePath>$(BannerlordPath)\Modules\Native\bin\Win64_Shipping_Client</BannerlordNativeModulePath> -->
     <!-- <BannerlordModulesPath>$(BannerlordPath)\Modules</BannerlordModulesPath> -->
     <!-- <BannerlordExePath>$(BannerlordPath)\bin\Win64_Shipping_Client\Bannerlord.exe</BannerlordExePath> -->
+
+    <!--
+      Optional: Deploy the built mod somewhere other than $(BannerlordPath)\Modules\AutoTrader
+    -->
+    <!-- <ModDeployPath>$(MSBuildThisFileDirectory)Deploy\AutoTrader</ModDeployPath> -->
   </PropertyGroup>
 </Project>

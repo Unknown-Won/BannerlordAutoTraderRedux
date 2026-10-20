@@ -183,6 +183,7 @@
     <Compile Include="GUI\AutoTraderState.cs" />
     <Compile Include="GUI\IAutoTraderStateHandler.cs" />
     <Compile Include="ILogicConnector.cs" />
+    <Compile Include="Warsails\CargoHoldsCompat.cs" />
     <Compile Include="Warsails\WarsailsDetector.cs" />
     <Compile Include="Warsails\WarsailsHelper.cs" />
   </ItemGroup>
@@ -208,7 +209,9 @@
   <!-- Post-build: Copy to Bannerlord Modules directory with correct structure -->
   <Target Name="CopyToBannerlord" AfterTargets="Build">
     <PropertyGroup>
-      <ModOutputPath>$(BannerlordModulesPath)\AutoTrader</ModOutputPath>
+      <!-- ModDeployPath (set in paths.props.user) overrides the default Modules folder -->
+      <ModOutputPath>$(ModDeployPath)</ModOutputPath>
+      <ModOutputPath Condition="'$(ModOutputPath)' == ''">$(BannerlordModulesPath)\AutoTrader</ModOutputPath>
     </PropertyGroup>
     <!-- Create directory structure -->
     <MakeDir Directories="$(ModOutputPath);$(ModOutputPath)\bin\Win64_Shipping_Client" />

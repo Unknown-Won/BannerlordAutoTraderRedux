@@ -9,8 +9,17 @@ namespace AutoTrader
             // Checks if we have the item too often
             var rosterWeight = logicConnector.GetItemWeight() * amount;
             AutoTraderHelpers.PrintDebugMessage("- weight in roster: " + rosterWeight.ToString());
-            if (rosterWeight >= (float)baseCapacity * ((float)AutoTraderConfig.MaxCapacityValue / 100f))
+            int maxCapacity = logicConnector.IsPort ? AutoTraderConfig.PortMaxCapacityValue : AutoTraderConfig.MaxCapacityValue;
+            if (rosterWeight >= (float)baseCapacity * ((float)maxCapacity / 100f))
             {
+                return false;
+            }
+
+            // Ports: also at most this many of one good, whichever limit is lower
+            if (logicConnector.IsPort && AutoTraderConfig.PortMaxItemCountValue < AutoTraderConfig.PortMaxItemCountInf
+                && amount >= AutoTraderConfig.PortMaxItemCountValue)
+            {
+                AutoTraderHelpers.PrintDebugMessage("- at the port maximum of " + AutoTraderConfig.PortMaxItemCountValue.ToString() + " of one good");
                 return false;
             }
             return true;
@@ -24,7 +33,7 @@ namespace AutoTrader
 
         public static bool CheckBuyCattleRule(ILogicConnector logicConnector)
         {
-            return logicConnector.GetNumPartyMembers() >= logicConnector.GetNumLivestockAnimals();
+            return logicConnector.HasRoomInHerd();
         }
 
         // Horses
@@ -33,7 +42,7 @@ namespace AutoTrader
             if (logicConnector.IsPackAnimal() && AutoTraderConfig.BuyHorsesValue)
             {
                 // Buy pack horses rule
-                if (logicConnector.GetNumPartyMembers() > logicConnector.GetNumLivestockAnimals() && buyoutPrice * 2 < availablePlayerGold)
+                if (logicConnector.HasRoomInHerd() && buyoutPrice * 2 < availablePlayerGold)
                     return true;
 
                 // TODO: Add max herding setting
@@ -45,7 +54,12 @@ namespace AutoTrader
         public static bool CheckBuyResupplyHardwoodRule(ILogicConnector logicConnector, int currentAmount)
         {
             if (AutoTraderConfig.ResupplyHardwoodValue && logicConnector.IsItemHardwood())
-                return currentAmount < AutoTraderConfig.KeepConsumablesMinValue;
+            {
+                // The maximum slider value means "keep all hardwood"
+                if (AutoTraderConfig.KeepHardwoodValue >= AutoTraderConfig.MaxKeepHardwoodValue)
+                    return true;
+                return currentAmount < AutoTraderConfig.KeepHardwoodValue;
+            }
             return false;
         }
 

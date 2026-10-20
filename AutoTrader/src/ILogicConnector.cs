@@ -15,9 +15,13 @@ namespace AutoTrader
     {
         bool IsCaravan { get; set; }
         bool IsBuying { get; set; }
+        bool IsPort { get; set; }
+        bool UseCargoHold { get; set; }
 
         void SetCurrentElementById(int itemId);
         void SetCurrentElementByName(string itemName);
+        object GetCurrentElement();
+        void SetCurrentElement(object element);
         int GetInitialGold();
         int GetTroopWage();
         float GetCurrentWeight();
@@ -26,6 +30,10 @@ namespace AutoTrader
         List<string> GetPlayerItemRosterNames();
         int GetNumPartyMembers();
         int GetNumLivestockAnimals();
+        int GetHerdSize();
+        bool HasRoomInHerd();
+        int GetMountSurplus();
+        int GetWarMountCount();
         int GetMerchantItemRosterSize();
         List<string> GetLocks();
         bool IsItemLocked();
@@ -33,6 +41,7 @@ namespace AutoTrader
         int GetItemAmount();
         int GetItemAmountInPlayerRoster();
         string GetItemName();
+        string GetItemId();
         float GetItemWeight();
         bool IsWeaponDesignEmpty();
         bool IsPackAnimal();
@@ -41,6 +50,9 @@ namespace AutoTrader
         int GetPartyHardwoodIndex();
         float GetRosterElementWeight();
         bool InitInventory();
+        bool InitBackgroundInventory();
+        void DeferBackgroundInventory();
+        void CancelBackgroundInventory();
         int GetMerchantGold();
         bool IsItemTierLowerThan(ItemObject.ItemTiers tier);
 
@@ -54,6 +66,10 @@ namespace AutoTrader
 
         /// Towns
         int GetTownListSize();
+        string GetTownName(int townId);
+        string GetVillageName(int villageId);
+        int GetTownItemStock(int townId);
+        int GetVillageItemStock(int villageId);
         bool IsTownInRange(int townId, out float actualDistance);
         bool IsCurrentTown(int townId);
         float GetTownItemPrice(int townId, bool isSelling);
@@ -69,6 +85,9 @@ namespace AutoTrader
         bool IsArmor();
         bool IsWeapon();
         bool IsHorse();
+        bool IsMount();
+        bool IsWarMount();
+        bool IsNobleMount();
         bool IsConsumable();
         bool IsLivestock();
 

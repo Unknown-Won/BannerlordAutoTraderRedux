@@ -2,15 +2,18 @@
 <Module>
 	<Name value = "AutoTrader"/>
 	<Id value = "AutoTrader"/>
-	<Version value = "v1.4.6"/>
+	<Version value = "v1.4.8"/>
 	<SingleplayerModule value="true"/>
 	<MultiplayerModule value="false"/>
 	<Official value="false"/>
 	<DependedModules>
     <DependedModule
       Id="Native"
-      DependentVersion="v1.4.6"
+      DependentVersion="v1.4.8"
       Optional="false" />
+    <DependedModule
+      Id="CargoHolds"
+      Optional="true" />
 	</DependedModules>
 	<SubModules>
 		<SubModule>
