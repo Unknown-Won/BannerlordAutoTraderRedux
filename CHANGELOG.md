@@ -1,9 +1,13 @@
 # AutoTrader changelog (2026-10-14)
 
+## v1.4.8.1 (2026-10-27)
+- **Locked items (2026-10-27):** items locked in the inventory are no longer sold when an unlocked item with the same name is also carried (for example a locked sword and a rusty copy of it). Selling now tells such items apart by their modifier.
+
+## v1.4.8
+
 Target game version is now **Bannerlord v1.4.8** (was v1.4.6).
 
 ## Fixes
-- **Locked items (2026-10-27):** items locked in the inventory are no longer sold when an unlocked item with the same name is also carried (for example a locked sword and a rusty copy of it). Selling now tells such items apart by their modifier.
 - **Resupply toggles are independent (2026-10-16):** "Resupply" (food) and "Resupply hardwood" no longer switch "Trade Consumables" or "Trade Goods" buying on, and turning those off no longer turns resupply off. Resupply tops up food and hardwood to their keep amounts even when buying consumables or goods for trade is off.
 - **Settings menu order:** "Basic Options" and "Buy / Sell Options" now sit at the top of their columns. The rows below them keep their previous order.
 - **Settings menu fit:** shorter slider and checkbox rows, so the bottom option is no longer hidden behind the Cancel button.
