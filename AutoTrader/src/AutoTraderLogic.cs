@@ -238,14 +238,15 @@ namespace AutoTrader
             AutoTraderHelpers.PrintDebugMessage("##### Selling #####");
             _logicConnector.IsBuying = false;
             ReserveCheapestMounts();
-            // Item name, prices elsewhere, price factor here
+            // Item key, prices elsewhere, price factor here.
+            // By key, not name: a locked item can share its name with an unlocked one (e.g. a plain and a rusty sword).
             var itemSellList = new List<Tuple<string, PriceInfo, float>>();
 
-            foreach( string itemName in _logicConnector.GetPlayerItemRosterNames())
+            foreach (string itemKey in _logicConnector.GetPlayerItemRosterKeys())
             {
                 AutoTraderHelpers.PrintDebugMessage("-------------------------------------------------------------------");
-                AutoTraderHelpers.PrintDebugMessage(" - current item: " + itemName);
-                _logicConnector.SetCurrentElementByName(itemName);
+                _logicConnector.SetCurrentElementByKey(itemKey);
+                AutoTraderHelpers.PrintDebugMessage(" - current item: " + _logicConnector.GetItemName());
 
                 // Check if its filtered
                 if (_logicConnector.IsItemFiltered(_boughtItems))
@@ -264,7 +265,7 @@ namespace AutoTrader
                 // Selling compares against what the item sells for elsewhere
                 PriceInfo prices = GetPrices();
                 float priceFactor = (float)_logicConnector.GetCostOfRosterElement() / prices.AverageSellPrice;
-                itemSellList.Add(Tuple.Create(itemName, prices, priceFactor));
+                itemSellList.Add(Tuple.Create(itemKey, prices, priceFactor));
             }
 
             // Best deals first, so a merchant short on gold spends it on them
@@ -274,8 +275,10 @@ namespace AutoTrader
             foreach (var element in itemSellList)
             {
                 AutoTraderHelpers.PrintDebugMessage("-------------------------------------------------------------------");
-                AutoTraderHelpers.PrintDebugMessage(" - current item: " + element.Item1 + " (price factor " + element.Item3.ToString() + ")");
-                _logicConnector.SetCurrentElementByName(element.Item1);
+                _logicConnector.SetCurrentElementByKey(element.Item1);
+                AutoTraderHelpers.PrintDebugMessage(" - current item: " + _logicConnector.GetItemName() + " (price factor " + element.Item3.ToString() + ")");
+                if (_logicConnector.IsItemLocked())
+                    continue;
                 int amount = _logicConnector.GetItemAmount();
 
                 // Sell items one by one

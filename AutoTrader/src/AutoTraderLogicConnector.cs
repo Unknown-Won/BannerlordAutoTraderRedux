@@ -237,13 +237,22 @@ namespace AutoTrader
         public bool IsItemLocked()
         {
             var locks = GetLocks();
-            var itemStringId = _currentItemRosterElement.EquipmentElement.Item.StringId;
-            if (_currentItemRosterElement.EquipmentElement.ItemModifier != null)
-            {
-                itemStringId += _currentItemRosterElement.EquipmentElement.ItemModifier.StringId;
-            }
+            var itemStringId = GetElementKey(_currentItemRosterElement.EquipmentElement);
             AutoTraderHelpers.PrintDebugMessage(" - IsLocked: " + locks.Contains(itemStringId).ToString());
             return locks.Contains(itemStringId);
+        }
+
+        /// <summary>
+        /// Tells apart items that share a name, like a plain and a rusty sword. Same as the game's inventory lock id.
+        /// </summary>
+        private static string GetElementKey(EquipmentElement equipmentElement)
+        {
+            var key = equipmentElement.Item.StringId;
+            if (equipmentElement.ItemModifier != null)
+            {
+                key += equipmentElement.ItemModifier.StringId;
+            }
+            return key;
         }
         public bool IsItemTradeGood()
         {
@@ -1066,6 +1075,24 @@ namespace AutoTrader
         public List<string> GetPlayerItemRosterNames()
         {
             return GetPlayerRoster().Select(x => x.EquipmentElement.Item.Name.ToString()).ToList();
+        }
+
+        public void SetCurrentElementByKey(string itemKey)
+        {
+            foreach (ItemRosterElement element in GetItemRoster())
+            {
+                if (GetElementKey(element.EquipmentElement) == itemKey)
+                {
+                    _currentItemRosterElement = element;
+                    return;
+                }
+            }
+            AutoTraderHelpers.PrintDebugMessage("!!!!! Could not find element with key : " + itemKey + " !!!!!");
+        }
+
+        public List<string> GetPlayerItemRosterKeys()
+        {
+            return GetPlayerRoster().Select(x => GetElementKey(x.EquipmentElement)).ToList();
         }
 
         public int GetItemAmountInPlayerRoster()

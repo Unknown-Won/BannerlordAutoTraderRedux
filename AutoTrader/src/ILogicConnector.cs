@@ -20,6 +20,7 @@ namespace AutoTrader
 
         void SetCurrentElementById(int itemId);
         void SetCurrentElementByName(string itemName);
+        void SetCurrentElementByKey(string itemKey);
         object GetCurrentElement();
         void SetCurrentElement(object element);
         int GetInitialGold();
@@ -28,6 +29,7 @@ namespace AutoTrader
         float GetInventoryCapacity();
         int GetPlayerItemRosterSize();
         List<string> GetPlayerItemRosterNames();
+        List<string> GetPlayerItemRosterKeys();
         int GetNumPartyMembers();
         int GetNumLivestockAnimals();
         int GetHerdSize();
