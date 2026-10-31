@@ -16,10 +16,12 @@ namespace AutoTrader
     public class TradeBehavior : CampaignBehaviorBase
     {
         private AutoTraderLogic _autoTraderLogic;
+        private ModdedTradeMenus _moddedTradeMenus;
 
         public TradeBehavior(AutoTraderLogic autoTraderLogic)
         {
             _autoTraderLogic = autoTraderLogic;
+            _moddedTradeMenus = new ModdedTradeMenus(autoTraderLogic);
         }
 
         public override void RegisterEvents()
@@ -70,6 +72,9 @@ namespace AutoTrader
             GameMenu menu = args?.MenuContext?.GameMenu;
             if (menu != null && menu.StringId == "port_menu")
                 GroupPortTradeOptions(menu);
+
+            // Other mods' Trade options, like a castle market or a black market
+            _moddedTradeMenus.AddAutoTradeOptions(menu, args?.MenuContext);
         }
 
         /// <summary>

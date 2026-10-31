@@ -1,5 +1,12 @@
 # AutoTrader changelog (2026-10-14)
 
+## v1.5.0 (2026-10-31)
+- **Trade options from other mods:** any game menu option another mod adds with the game's Trade icon now gets an "Automatically trade wares" button right before it. Examples are the castle market of Castle Market Towns and the black markets and hideout traders of Guilds of Calradia. The button is shown, greyed out and explained exactly like the mod's own option. It runs the mod's option, so the mod sets up the trade screen as usual (its stock, its prices, its gold), then autotrades on that screen. Nothing is paid until you press Done, like any autotrade.
+  - When one menu has several such options, each button names the option it uses, for example "Automatically trade wares (Visit the black market)".
+  - Prices are compared with the towns in range as usual. The market the screen uses counts as the current market. Where the screen has no town market, such as a hideout, the nearest town's prices are used for the price factor.
+  - If an option turns out not to open a trade screen, AutoTrader says so and hides its button until you restart the game.
+  - Trade options of the base game are not affected, since AutoTrader already has its own town, village, port and caravan buttons. Trades that start from a conversation in another mod are not covered.
+
 ## v1.4.8.1 (2026-10-27)
 - **Locked items (2026-10-27):** items locked in the inventory are no longer sold when an unlocked item with the same name is also carried (for example a locked sword and a rusty copy of it). Selling now tells such items apart by their modifier.
 

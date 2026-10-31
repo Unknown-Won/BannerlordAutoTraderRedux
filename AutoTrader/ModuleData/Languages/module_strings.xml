@@ -16,6 +16,8 @@
     <string id="ATTradePartyInventory" text="Automatically trade wares (party inventory)" />
     <string id="ATManualTradeCargoHold" text="Trade (cargo hold)" />
     <string id="ATManualTradePartyInventory" text="Trade (party inventory)" />
+    <string id="ATTradeWithOption" text="Automatically trade wares ({OPTION})" />
+    <string id="ATNoTradeScreen" text="AutoTrader: this option did not open a trade screen, so its autotrade button is hidden for now." />
     <!---->
     <string id="ATConfig" text="AutoTrader Options" />
     <string id="ATOptions" text="AutoTrader Configuration" />

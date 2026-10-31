@@ -30,6 +30,9 @@ namespace AutoTrader
         // True to trade against the fleet's hold from the Cargo Holds mod
         public bool _useCargoHold = false;
 
+        // True to trade on the trade screen that is already open, whoever opened it (other mods' Trade options)
+        public bool _useOpenTradeScreen = false;
+
         private ItemRosterElement _currentItemRosterElement;
         private InventoryLogic _inventoryLogic;
         // Sale from the roster the trade screen doesn't show, settled when that screen closes
@@ -46,12 +49,44 @@ namespace AutoTrader
         bool ILogicConnector.IsBuying { get { return _isBuying; } set { _isBuying = value; } }
         bool ILogicConnector.IsPort { get { return _isPort; } set { _isPort = value; } }
         bool ILogicConnector.UseCargoHold { get { return _useCargoHold; } set { _useCargoHold = value; } }
+        bool ILogicConnector.UseOpenTradeScreen { get { return _useOpenTradeScreen; } set { _useOpenTradeScreen = value; } }
 
         public enum MerchantType
         {
             Town,
             Village,
-            Caravan
+            Caravan,
+            // Whatever the open trade screen trades with, like a castle market or a black market from another mod
+            TradeScreen
+        }
+
+        /// <summary>
+        /// The trade screen that is open right now, or null. Unlike InventoryScreenHelper.GetActiveInventoryState, doesn't assert when none is open.
+        /// </summary>
+        private static InventoryLogic GetOpenTradeLogic()
+        {
+            var state = TaleWorlds.Core.GameStateManager.Current?.ActiveState as TaleWorlds.CampaignSystem.GameState.InventoryState;
+            if (state == null || state.InventoryMode != InventoryScreenHelper.InventoryMode.Trade)
+                return null;
+            return state.InventoryLogic;
+        }
+
+        public bool IsTradeScreenOpen()
+        {
+            return GetOpenTradeLogic() != null;
+        }
+
+        private static readonly FieldInfo RostersField = typeof(InventoryLogic).GetField("_rosters", BindingFlags.NonPublic | BindingFlags.Instance);
+
+        /// <summary>
+        /// One side of a trade screen: OtherInventory is the merchant, PlayerInventory the player. InventoryLogic keeps them private.
+        /// </summary>
+        private static ItemRoster GetTradeScreenRoster(InventoryLogic logic, InventoryLogic.InventorySide side)
+        {
+            var rosters = logic != null ? RostersField?.GetValue(logic) as ItemRoster[] : null;
+            if (rosters == null || rosters.Length <= (int)side)
+                return null;
+            return rosters[(int)side];
         }
 
         public void SetCurrentElementById(int itemId)
@@ -113,6 +148,12 @@ namespace AutoTrader
         /// </summary>
         private ItemRoster GetPlayerRoster()
         {
+            if (_useOpenTradeScreen)
+            {
+                var screenRoster = GetTradeScreenRoster(GetOpenTradeLogic(), InventoryLogic.InventorySide.PlayerInventory);
+                if (screenRoster != null)
+                    return screenRoster;
+            }
             if (_useCargoHold)
             {
                 var hold = CargoHoldsCompat.GetPlayerFleetHold();
@@ -216,13 +257,25 @@ namespace AutoTrader
         }
         public int GetMerchantItemRosterSize()
         {
-            if (_isCaravan)
+            var result = GetMerchantRoster().Count;
+            AutoTraderHelpers.PrintDebugMessage(" - MerchantItemRosterSize (" + GetMerchantType().ToString() + "): " + result.ToString());
+            return result;
+        }
+
+        /// <summary>
+        /// The merchant's side of the trade: the caravan, the settlement's market, or the left side of the open trade screen.
+        /// </summary>
+        private ItemRoster GetMerchantRoster()
+        {
+            switch (GetMerchantType())
             {
-                AutoTraderHelpers.PrintDebugMessage(" - MerchantItemRosterSize (Caravan): " + MobileParty.ConversationParty.ItemRoster.Count.ToString());
-                return MobileParty.ConversationParty.ItemRoster.Count;
+                case MerchantType.Caravan:
+                    return MobileParty.ConversationParty.ItemRoster;
+                case MerchantType.TradeScreen:
+                    return GetTradeScreenRoster(GetOpenTradeLogic(), InventoryLogic.InventorySide.OtherInventory) ?? new ItemRoster();
+                default:
+                    return Settlement.CurrentSettlement.ItemRoster;
             }
-            AutoTraderHelpers.PrintDebugMessage(" - MerchantItemRosterSize (Town): " + Settlement.CurrentSettlement.ItemRoster.Count.ToString());
-            return Settlement.CurrentSettlement.ItemRoster.Count;
         }
         public List<string> GetLocks()
         {
@@ -329,7 +382,11 @@ namespace AutoTrader
         private MerchantType GetMerchantType()
         {
             MerchantType merchantType;
-            if (_isCaravan)
+            if (_useOpenTradeScreen)
+            {
+                merchantType = MerchantType.TradeScreen;
+            }
+            else if (_isCaravan)
             {
                 merchantType = MerchantType.Caravan;
 
@@ -366,6 +423,12 @@ namespace AutoTrader
             else if (merchantType == MerchantType.Caravan)
             {
                 InventoryScreenHelper.OpenTradeWithCaravanOrAlleyParty(MobileParty.ConversationParty, InventoryScreenHelper.InventoryCategoryType.None);
+            }
+            else if (merchantType == MerchantType.TradeScreen)
+            {
+                // Already open
+                if (GetOpenTradeLogic() == null)
+                    return false;
             }
             else
             {
@@ -780,6 +843,11 @@ namespace AutoTrader
                 case MerchantType.Caravan:
                     result = MobileParty.ConversationParty.PartyTradeGold;
                     break;
+                case MerchantType.TradeScreen:
+                    // The screen's own gold source, which may be a mod's
+                    InventoryListener listener = GetOpenTradeLogic()?.InventoryListener;
+                    result = listener != null ? listener.GetGold() : 0;
+                    break;
             }
             AutoTraderHelpers.PrintDebugMessage(" - MerchantGold: " + result.ToString());
             return result;
@@ -788,12 +856,8 @@ namespace AutoTrader
         private ItemRoster GetItemRoster()
         {
             if (_isBuying)
-            {
-                if (GetMerchantType() == MerchantType.Caravan)
-                    return MobileParty.ConversationParty.ItemRoster;
-                return Settlement.CurrentSettlement.ItemRoster;
-                
-            } else
+                return GetMerchantRoster();
+            else
                 return GetPlayerRoster();
         }
 
@@ -951,6 +1015,8 @@ namespace AutoTrader
             if (_isCaravan)
                 return false;
             var town = GetTownById(townId);
+            if (_useOpenTradeScreen)
+                return IsOpenTradeScreenMarket(town.MarketData);
             var result = Settlement.CurrentSettlement.IsTown && town == Settlement.CurrentSettlement.Town;
             return result;
         }
@@ -960,12 +1026,46 @@ namespace AutoTrader
             var result = town.MarketData.GetPrice(_currentItemRosterElement.EquipmentElement.Item, PartyBase.MainParty.MobileParty, isSelling);
             return result;
         }
+        /// <summary>
+        /// True if the open trade screen prices items with this market, so it counts as the market we trade in.
+        /// </summary>
+        private static bool IsOpenTradeScreenMarket(object marketData)
+        {
+            var logic = GetOpenTradeLogic();
+            return logic != null && marketData != null && ReferenceEquals(logic.MarketData, marketData);
+        }
+
         public float GetCurrentTownPriceFactor()
         {
-            Town town = Settlement.CurrentSettlement.IsVillage ? Settlement.CurrentSettlement.Village.Bound.Town : Settlement.CurrentSettlement.Town;
-            var result = town.MarketData.GetPriceFactor(_currentItemRosterElement.EquipmentElement.Item.ItemCategory);
+            TownMarketData market = GetCurrentTownMarket();
+            if (market == null)
+            {
+                AutoTraderHelpers.PrintDebugMessage(" - CurrentTownPriceFactor: no town market, using 1");
+                return 1f;
+            }
+            var result = market.GetPriceFactor(_currentItemRosterElement.EquipmentElement.Item.ItemCategory);
             AutoTraderHelpers.PrintDebugMessage(" - CurrentTownPriceFactor: " + result.ToString());
             return result;
+        }
+
+        /// <summary>
+        /// The town market whose prices we trade at: the town, the village's town, or for another mod's trade screen
+        /// the market that screen uses, else the town of the current settlement (castles have one), else the nearest town.
+        /// </summary>
+        private TownMarketData GetCurrentTownMarket()
+        {
+            if (_useOpenTradeScreen)
+            {
+                if (GetOpenTradeLogic()?.MarketData is TownMarketData screenMarket)
+                    return screenMarket;
+            }
+            Settlement settlement = Settlement.CurrentSettlement;
+            Town town = null;
+            if (settlement != null)
+                town = settlement.IsVillage ? settlement.Village?.Bound?.Town : settlement.Town;
+            if (town == null && _useOpenTradeScreen)
+                town = SettlementHelper.FindNearestTownToMobileParty(MobileParty.MainParty, MobileParty.NavigationType.All);
+            return town?.MarketData;
         }
 
         /// Villages
@@ -991,6 +1091,8 @@ namespace AutoTrader
             if (_isCaravan)
                 return false;
             var village = GetVillageById(townId);
+            if (_useOpenTradeScreen)
+                return IsOpenTradeScreenMarket(village.MarketData);
             var result = Settlement.CurrentSettlement.IsVillage && village == Settlement.CurrentSettlement.Village;
             return result;
         }

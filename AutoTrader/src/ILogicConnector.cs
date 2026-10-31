@@ -17,6 +17,9 @@ namespace AutoTrader
         bool IsBuying { get; set; }
         bool IsPort { get; set; }
         bool UseCargoHold { get; set; }
+        // True to trade on the trade screen that is already open (opened by another mod's Trade option)
+        bool UseOpenTradeScreen { get; set; }
+        bool IsTradeScreenOpen();
 
         void SetCurrentElementById(int itemId);
         void SetCurrentElementByName(string itemName);

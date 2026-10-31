@@ -73,6 +73,56 @@ namespace AutoTrader
         public void OnApplicationTick()
         {
             Connector.TickInventoryDisplayRefresh();
+            TickPendingTradeScreen();
+        }
+
+        // Autotrade waiting for a trade screen that another mod's menu option opens a moment later
+        private Action _pendingTradeScreenTimeout;
+        private DateTime _pendingTradeScreenDeadline;
+        private static readonly TimeSpan PendingTradeScreenWait = TimeSpan.FromSeconds(2);
+
+        /// <summary>
+        /// Autotrades on the trade screen that is open right now, whoever opened it (used for other mods' Trade options).
+        /// Returns false if no trade screen is open.
+        /// </summary>
+        public bool TryPerformAutoTradeOnTradeScreen()
+        {
+            if (IsTradingActive || !_logicConnector.IsTradeScreenOpen())
+                return false;
+            _pendingTradeScreenTimeout = null;
+            _logicConnector.UseOpenTradeScreen = true;
+            try
+            {
+                PerformAutoTrade(false);
+            }
+            finally
+            {
+                _logicConnector.UseOpenTradeScreen = false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Autotrades on the next trade screen that opens within a moment. Calls onTimeout if none opens.
+        /// </summary>
+        public void AutoTradeWhenTradeScreenOpens(Action onTimeout)
+        {
+            _pendingTradeScreenTimeout = onTimeout ?? (() => { });
+            _pendingTradeScreenDeadline = DateTime.UtcNow + PendingTradeScreenWait;
+        }
+
+        private void TickPendingTradeScreen()
+        {
+            if (_pendingTradeScreenTimeout == null)
+                return;
+            if (TryPerformAutoTradeOnTradeScreen())
+                return;
+            if (DateTime.UtcNow > _pendingTradeScreenDeadline)
+            {
+                Action onTimeout = _pendingTradeScreenTimeout;
+                _pendingTradeScreenTimeout = null;
+                onTimeout();
+            }
         }
 
         /// <param name="sellFromBothRosters">In a port with Cargo Holds: also sell from the roster that is not traded with (party inventory or cargo hold) before trading</param>
