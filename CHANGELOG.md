@@ -1,5 +1,8 @@
 # AutoTrader changelog (2026-10-14)
 
+## Unreleased
+- **Log location:** AutoTrader.log is now written to `Documents\Mount and Blade II Bannerlord\Configs\ModLogs`, next to other mods' logs. AutoTraderConfig.xml stays in `Configs`.
+
 ## v1.4.8.1 (2026-10-27)
 - **Locked items (2026-10-27):** items locked in the inventory are no longer sold when an unlocked item with the same name is also carried (for example a locked sword and a rusty copy of it). Selling now tells such items apart by their modifier.
 
