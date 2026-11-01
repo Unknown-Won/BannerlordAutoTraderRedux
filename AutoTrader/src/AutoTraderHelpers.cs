@@ -13,7 +13,9 @@ namespace AutoTrader
 {
     public static class AutoTraderHelpers
     {
-        private static PlatformFilePath debugLogFilePath = new PlatformFilePath(EngineFilePaths.ConfigsPath, "AutoTrader.log");
+        // Configs\ModLogs, next to the other mods' logs (the settings file stays in Configs)
+        private static readonly PlatformDirectoryPath modLogsPath = new PlatformDirectoryPath(EngineFilePaths.ConfigsPath.Type, EngineFilePaths.ConfigsPath.Path + "/ModLogs/");
+        private static PlatformFilePath debugLogFilePath = new PlatformFilePath(modLogsPath, "AutoTrader.log");
 
         public static void Initialize()
         {
