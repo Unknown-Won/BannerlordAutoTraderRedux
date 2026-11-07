@@ -10,6 +10,9 @@
     <Constant Name="AT.Slider.Slider.Height" Value="37" />
     <Constant Name="AT.Slider.Slider.MarginLeft" Value="20" />
     <Constant Name="AT.Slider.Value.MarginLeft" Value="20" />
+    <Constant Name="AT.Slider.Value.Width" Value="70" />
+    <Constant Name="AT.Slider.Value.Width.Wide" Value="90" />
+    <Constant Name="AT.Slider.Value.Height" Value="32" />
     <Constant Name="AT.Slider.Default.MarginLeft" Value="20" />
     <Constant Name="AT.Slider.DefaultValue.MarginLeft" Value="10" />
 
@@ -110,7 +113,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@SearchRadiusValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@SearchRadiusValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="300" />
                               </Children>
@@ -187,7 +195,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepWagesValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepWagesValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="7" />
                               </Children>
@@ -220,7 +233,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@UseInventorySpaceValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@UseInventorySpaceValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="90" />
                               </Children>
@@ -253,7 +271,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@MaxCapacityValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxCapacityValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="20" />
                               </Children>
@@ -273,6 +296,49 @@
               <Children>
                 <ListPanel Id="OuterList" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Top" StackLayout.LayoutMethod="VerticalTopToBottom">
                   <Children>
+
+                    <!-- Profiles: a name box with Save and Delete, and the saved profiles. Clicking one fills in the settings; Done applies them. -->
+                    <ListPanel Id="ProfilesHeader" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" StackLayout.LayoutMethod="VerticalTopToBottom">
+                      <Children>
+                        <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" Text="@ProfilesText" />
+                        <BrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Heading.Divider.Width" SuggestedHeight="2" HorizontalAlignment="Center" MarginTop="8" MarginBottom="!AT.Heading.MarginBottom" Brush="AT.Divider" />
+                      </Children>
+                    </ListPanel>
+
+                    <ListPanel Id="ProfileNameRow" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="46" VerticalAlignment="Center" MarginRight="15">
+                          <Children>
+                            <BrushWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" />
+                            <EditableTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="12" MarginRight="12" Brush="AT.ProfileName.Text" RealText="@ProfileName" DefaultSearchText="@ProfileNameHintText" MaxLength="40" />
+                          </Children>
+                        </Widget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteSaveProfile" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="140" SuggestedHeight="60" MarginBottom="3" VerticalAlignment="Center" Brush="Header.Tab.Left">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="1" Brush="Clan.TabControl.Text" Text="@ProfileSaveText"/>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteDeleteProfile" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="140" SuggestedHeight="60" MarginBottom="3" VerticalAlignment="Center" Brush="Header.Tab.Right">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="1" Brush="Clan.TabControl.Text" Text="@ProfileDeleteText"/>
+                          </Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                    <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" SuggestedWidth="560" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="10" Brush="SPOptions.OptionName.Text" Text="@NoProfilesText" IsHidden="@HasProfiles" />
+
+                    <GridWidget Id="ProfileList" DataSource="{Profiles}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="10" ColumnCount="2" DefaultCellWidth="260" DefaultCellHeight="56" IsVisible="@HasProfiles">
+                      <ItemTemplate>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteLoad" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="250" SuggestedHeight="51" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Header.Tab.Center" IsSelected="@IsSelected">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="1" MarginLeft="10" MarginRight="10" Brush="Clan.TabControl.Text" Text="@Name"/>
+                          </Children>
+                        </ButtonWidget>
+                      </ItemTemplate>
+                    </GridWidget>
+
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!AT.Heading.MarginTop" />
 
                     <!-- Divider with Header-->
                     <ListPanel Id="OuterList" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" StackLayout.LayoutMethod="VerticalTopToBottom">
@@ -347,7 +413,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@BuyThresholdValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@BuyThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="75" />
                               </Children>
@@ -380,7 +451,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@MinBuyProfitValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MinBuyProfitValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="50" />
                               </Children>
@@ -413,7 +489,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@BuyProfitOverrideValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@BuyProfitOverrideValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="1000" />
                               </Children>
@@ -454,7 +535,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@SellThresholdValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@SellThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="90" />
                               </Children>
@@ -487,7 +573,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@WeaponsArmorTierValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@WeaponsArmorTierValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="2" />
                               </Children>
@@ -821,7 +912,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepGrainsMinValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepGrainsMinValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="10" />
                               </Children>
@@ -854,7 +950,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepGrainsMaxValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepGrainsMaxValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="50" />
                               </Children>
@@ -887,7 +988,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepConsumablesMinValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepConsumablesMinValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="4" />
                               </Children>
@@ -920,7 +1026,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepConsumablesMaxValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepConsumablesMaxValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="50" />
                               </Children>
@@ -961,7 +1072,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepHardwoodValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepHardwoodValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="100" />
                               </Children>
@@ -994,7 +1110,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@HardwoodBuyThresholdValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@HardwoodBuyThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="110" />
                               </Children>
@@ -1035,7 +1156,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepWarMountsValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepWarMountsValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="0" />
                               </Children>
@@ -1068,7 +1194,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@KeepSpareMountsValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepSpareMountsValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="5" />
                               </Children>
@@ -1101,7 +1232,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@MaxHerdTradePercentValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxHerdTradePercentValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="90" />
                               </Children>
@@ -1134,7 +1270,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="110" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@MaxHorseGoldPerTypeValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width.Wide" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxHorseGoldPerTypeValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="75000" />
                               </Children>
@@ -1287,7 +1428,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@PortUseInventorySpaceValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortUseInventorySpaceValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="100" />
                               </Children>
@@ -1320,7 +1466,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@PortMaxCapacityValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMaxCapacityValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="30" />
                               </Children>
@@ -1353,7 +1504,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@PortMaxItemCountValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMaxItemCountValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="300" />
                               </Children>
@@ -1386,7 +1542,12 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="50" HeightSizePolicy="CoverChildren" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@PortMinBuyProfitValueAsString" />
+                                <!-- Click to type a value; Enter applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMinBuyProfitValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                  <Children>
+                                    <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
+                                  </Children>
+                                </EditableTextWidget>
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.Default.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="@DefaultText" />
                                 <RichTextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" MarginLeft="!AT.Slider.DefaultValue.MarginLeft" VerticalAlignment="Center" Brush="SPOptions.OptionName.Text" IsEnabled="false" Text="40" />
                               </Children>
@@ -1460,7 +1621,12 @@
 
 
         <!-- Hint -->
-        <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="50" Brush="SPOptions.OptionName.Text" Text="@LockHintText" />
+        <ListPanel DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="50" StackLayout.LayoutMethod="HorizontalLeftToRight">
+          <Children>
+            <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" Brush="SPOptions.OptionName.Text" Text="@LockHintText" />
+            <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" MarginLeft="60" Brush="SPOptions.OptionName.Text" Text="@TypedValuesHintText" />
+          </Children>
+        </ListPanel>
 
         <!-- Done/ Close Buttons -->
         <Standard.DialogCloseButtons VisualDefinition="BottomMenu" PositionYOffset="100" Parameter.CancelButtonAction="ExecuteCancel" Parameter.CancelButtonText="@CancelText" Parameter.DoneButtonAction="ExecuteDone" Parameter.DoneButtonText="@DoneText" />

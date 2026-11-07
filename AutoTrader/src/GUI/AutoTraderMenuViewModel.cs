@@ -5,7 +5,7 @@ using TaleWorlds.ScreenSystem;
 
 namespace AutoTrader
 {
-    class AutoTraderMenuViewModel : ViewModel
+    partial class AutoTraderMenuViewModel : ViewModel
     {
 		private string _configMenuText;
 		private string _doneText;
@@ -324,6 +324,7 @@ namespace AutoTrader
 			this._isWeightedActive = !this._simpleAIValue;
 			this._isSearchRadiusActive = (!this._simpleAIValue && !this._useWeightedValue);
 
+			this.InitializeProfiles();
 			this.RefreshValues();
 		}
 
@@ -366,6 +367,8 @@ namespace AutoTrader
 
 		private void ExecuteDone()
 		{
+			this.ApplyTypedValues();
+
 			AutoTraderConfig.UseWeightedValue = this._useWeightedValue;
 			AutoTraderConfig.SimpleTradingAI = this._simpleAIValue;
 			AutoTraderConfig.BuyThresholdValue = (int)this.BuyThresholdValue;
@@ -448,6 +451,7 @@ namespace AutoTrader
 
 		private void SelectTab(int tab)
 		{
+			this.ApplyTypedValues();
 			this._selectedTab = tab;
 			base.OnPropertyChanged("IsGeneralTab");
 			base.OnPropertyChanged("IsTradingTab");
@@ -479,6 +483,8 @@ namespace AutoTrader
 
 		private void ExecutePresetDefault()
 		{
+			this.ApplyTypedValues();
+
 			this.SimpleAIValue = false;
 
 			this.BuyThresholdValue = 75.0f;
@@ -535,6 +541,8 @@ namespace AutoTrader
 
 		private void ExecutePresetSeller()
 		{
+			this.ApplyTypedValues();
+
 			this.WeaponsArmorTierValue = 3.0f;
 			this.SellSmithingValue = false;
 			this.KeepSmeltingValue = false;
@@ -559,6 +567,8 @@ namespace AutoTrader
 
 		private void ExecutePresetGlobal()
 		{
+			this.ApplyTypedValues();
+
 			this.SimpleAIValue = false;
 
 			this.SearchRadiusValue = 1000.0f;
@@ -575,6 +585,8 @@ namespace AutoTrader
 
 		private void ExecutePresetLocal()
 		{
+			this.ApplyTypedValues();
+
 			this.SimpleAIValue = false;
 
 			this.SearchRadiusValue = 300.0f;

@@ -46,6 +46,8 @@ namespace AutoTrader
 			this._gauntletLayer.LoadMovie("AutoTraderConfigScreen", this._viewModel);
 
 			base.AddLayer(this._gauntletLayer);
+			// Keyboard focus, so the number and name boxes receive typing
+			ScreenManager.TrySetFocus(this._gauntletLayer);
 		}
 
 		private void CloseAutoTraderScreen()

@@ -103,6 +103,25 @@
     <string id="ATDone" text="Done" />
     <string id="ATCancel" text="Cancel" />
     <!---->
+    <string id="ATTypedValuesHint" text="Click a number next to a slider to type a value, then press Enter." />
+    <string id="ATHeaderProfiles" text="Profiles" />
+    <string id="ATProfileNameHint" text="Profile name" />
+    <string id="ATProfileSave" text="Save" />
+    <string id="ATProfileDelete" text="Delete" />
+    <string id="ATNoProfiles" text="Type a name and press Save to keep the settings on screen as a profile." />
+    <string id="ATProfileNoName" text="Type a name for the profile first." />
+    <string id="ATProfileSaved" text="Profile &quot;{NAME}&quot; saved." />
+    <string id="ATProfileSaveFailed" text="Couldn't save the profile &quot;{NAME}&quot;." />
+    <string id="ATProfileLoadFailed" text="Couldn't read the profile &quot;{NAME}&quot;." />
+    <string id="ATProfileOverwriteTitle" text="Overwrite profile" />
+    <string id="ATProfileOverwrite" text="Replace the profile &quot;{NAME}&quot; with the settings on screen?" />
+    <string id="ATProfileDeleteTitle" text="Delete profile" />
+    <string id="ATProfileDeleteConfirm" text="Delete the profile &quot;{NAME}&quot;?" />
+    <string id="ATProfileDeleteNone" text="Click a saved profile, or type its name, to delete it." />
+    <string id="ATProfileDeleted" text="Profile &quot;{NAME}&quot; deleted." />
+    <string id="ATYes" text="Yes" />
+    <string id="ATNo" text="No" />
+    <!---->
     <string id="ATFleetNotDocked" text="Your fleet is not docked at this port." />
     <string id="ATNoInventorySpace" text="My Lord! We cannot fit any more goods into our inventory!" />
     <string id="ATNoFleetSpace" text="My Lord! We cannot load more goods onto our fleet! Keep in mind that we need space for our herd." />

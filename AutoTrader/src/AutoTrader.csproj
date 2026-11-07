@@ -175,11 +175,14 @@
     <Compile Include="AutoTraderHelpers.cs" />
     <Compile Include="AutoTraderLogic.cs" />
     <Compile Include="AutoTraderLogicConnector.cs" />
+    <Compile Include="AutoTraderProfiles.cs" />
     <Compile Include="AutoTraderSpecialRules.cs" />
     <Compile Include="AutoTraderSubModule.cs" />
     <Compile Include="GUI\AutoTradeMainMenuGauntletScreen.cs" />
     <Compile Include="GUI\AutoTradeMenuGauntletScreen.cs" />
     <Compile Include="GUI\AutoTraderMenuViewModel.cs" />
+    <Compile Include="GUI\AutoTraderMenuViewModel.Profiles.cs" />
+    <Compile Include="GUI\AutoTraderMenuViewModel.TypedValues.cs" />
     <Compile Include="GUI\AutoTraderState.cs" />
     <Compile Include="GUI\IAutoTraderStateHandler.cs" />
     <Compile Include="ILogicConnector.cs" />
