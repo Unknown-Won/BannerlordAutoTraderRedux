@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using TaleWorlds.Core.ViewModelCollection.Selector;
 using TaleWorlds.Library;
 using TaleWorlds.Localization;
 
 namespace AutoTrader
 {
-	// Settings profiles on the General tab. Loading a profile fills in the screen like a preset; Done applies it.
+	// Settings profiles on the General tab. Choosing a profile in the dropdown fills in the screen like a preset; Done applies it.
 	partial class AutoTraderMenuViewModel
 	{
 		private class ProfileSetting
@@ -18,7 +19,11 @@ namespace AutoTrader
 		}
 
 		private List<ProfileSetting> _profileSettings;
-		private MBBindingList<AutoTraderProfileItemVM> _profiles;
+		private SelectorVM<SelectorItemVM> _profileSelector;
+		// Saved profile names; the dropdown shows "Choose a profile" first, so item i + 1 is _profileNames[i]
+		private List<string> _profileNames = new List<string>();
+		private bool _updatingProfileSelector;
+		private string _chooseProfileText;
 		private string _profileName = "";
 		private string _profilesText;
 		private string _profileNameHintText;
@@ -34,9 +39,11 @@ namespace AutoTrader
 			this._profileSaveText = new TextObject("{=ATProfileSave}Save", null).ToString();
 			this._profileDeleteText = new TextObject("{=ATProfileDelete}Delete", null).ToString();
 			this._noProfilesText = new TextObject("{=ATNoProfiles}Type a name and press Save to keep the settings on screen as a profile.", null).ToString();
-			this._typedValuesHintText = new TextObject("{=ATTypedValuesHint}Click a number next to a slider to type a value, then press Enter.", null).ToString();
+			this._typedValuesHintText = new TextObject("{=ATTypedValuesHint}Click a number next to a slider to type a value, then press Enter or click elsewhere.", null).ToString();
 
-			this._profiles = new MBBindingList<AutoTraderProfileItemVM>();
+			this._chooseProfileText = new TextObject("{=ATChooseProfile}Choose a profile", null).ToString();
+
+			this._profileSelector = new SelectorVM<SelectorItemVM>(0, this.OnProfileSelected);
 			this.RefreshProfileList();
 		}
 
@@ -139,18 +146,40 @@ namespace AutoTrader
 
 		private void RefreshProfileList()
 		{
-			this._profiles.Clear();
-			foreach (string name in AutoTraderProfiles.GetProfileNames())
-				this._profiles.Add(new AutoTraderProfileItemVM(name, this.LoadProfile));
-			this.UpdateSelectedProfile();
+			this._profileNames = AutoTraderProfiles.GetProfileNames();
+			List<string> items = new List<string> { this._chooseProfileText };
+			items.AddRange(this._profileNames);
+
+			this._updatingProfileSelector = true;
+			this._profileSelector.Refresh(items, this.GetSelectedProfileIndex(), this.OnProfileSelected);
+			this._updatingProfileSelector = false;
 			base.OnPropertyChanged("HasProfiles");
 		}
 
+		// Shows the profile named in the name box in the dropdown, or "Choose a profile"
 		private void UpdateSelectedProfile()
 		{
+			if (this._profileSelector == null)
+				return;
+
+			this._updatingProfileSelector = true;
+			this._profileSelector.SelectedIndex = this.GetSelectedProfileIndex();
+			this._updatingProfileSelector = false;
+		}
+
+		private int GetSelectedProfileIndex()
+		{
 			string name = AutoTraderProfiles.CleanName(this._profileName);
-			foreach (AutoTraderProfileItemVM item in this._profiles)
-				item.IsSelected = string.Equals(item.Name, name, StringComparison.OrdinalIgnoreCase);
+			int index = this._profileNames.FindIndex(n => string.Equals(n, name, StringComparison.OrdinalIgnoreCase));
+			return index + 1;
+		}
+
+		private void OnProfileSelected(SelectorVM<SelectorItemVM> selector)
+		{
+			if (this._updatingProfileSelector || selector.SelectedIndex <= 0 || selector.SelectedIndex > this._profileNames.Count)
+				return;
+
+			this.LoadProfile(this._profileNames[selector.SelectedIndex - 1]);
 		}
 
 		private void LoadProfile(string name)
@@ -225,7 +254,7 @@ namespace AutoTrader
 			string existing = AutoTraderProfiles.GetProfileNames().FirstOrDefault(n => string.Equals(n, name, StringComparison.OrdinalIgnoreCase));
 			if (existing == null)
 			{
-				AutoTraderHelpers.PrintMessage(new TextObject("{=ATProfileDeleteNone}Click a saved profile, or type its name, to delete it.", null).ToString());
+				AutoTraderHelpers.PrintMessage(new TextObject("{=ATProfileDeleteNone}Choose a profile, or type its name, to delete it.", null).ToString());
 				return;
 			}
 
@@ -257,18 +286,18 @@ namespace AutoTrader
 		}
 
 		[DataSourceProperty]
-		public MBBindingList<AutoTraderProfileItemVM> Profiles
+		public SelectorVM<SelectorItemVM> ProfileSelector
 		{
 			get
 			{
-				return this._profiles;
+				return this._profileSelector;
 			}
 			set
 			{
-				if (value != this._profiles)
+				if (value != this._profileSelector)
 				{
-					this._profiles = value;
-					base.OnPropertyChanged("Profiles");
+					this._profileSelector = value;
+					base.OnPropertyChanged("ProfileSelector");
 				}
 			}
 		}
@@ -278,7 +307,7 @@ namespace AutoTrader
 		{
 			get
 			{
-				return this._profiles != null && this._profiles.Count > 0;
+				return this._profileNames.Count > 0;
 			}
 		}
 
@@ -342,51 +371,6 @@ namespace AutoTrader
 			get
 			{
 				return this._noProfilesText;
-			}
-		}
-	}
-
-	class AutoTraderProfileItemVM : ViewModel
-	{
-		private readonly Action<string> _onLoad;
-		private readonly string _name;
-		private bool _isSelected;
-
-		public AutoTraderProfileItemVM(string name, Action<string> onLoad)
-		{
-			this._name = name;
-			this._onLoad = onLoad;
-		}
-
-		private void ExecuteLoad()
-		{
-			if (this._onLoad != null)
-				this._onLoad(this._name);
-		}
-
-		[DataSourceProperty]
-		public string Name
-		{
-			get
-			{
-				return this._name;
-			}
-		}
-
-		[DataSourceProperty]
-		public bool IsSelected
-		{
-			get
-			{
-				return this._isSelected;
-			}
-			set
-			{
-				if (value != this._isSelected)
-				{
-					this._isSelected = value;
-					base.OnPropertyChanged("IsSelected");
-				}
 			}
 		}
 	}

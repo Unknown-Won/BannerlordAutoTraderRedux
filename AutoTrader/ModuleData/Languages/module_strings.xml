@@ -103,9 +103,10 @@
     <string id="ATDone" text="Done" />
     <string id="ATCancel" text="Cancel" />
     <!---->
-    <string id="ATTypedValuesHint" text="Click a number next to a slider to type a value, then press Enter." />
+    <string id="ATTypedValuesHint" text="Click a number next to a slider to type a value, then press Enter or click elsewhere." />
     <string id="ATHeaderProfiles" text="Profiles" />
     <string id="ATProfileNameHint" text="Profile name" />
+    <string id="ATChooseProfile" text="Choose a profile" />
     <string id="ATProfileSave" text="Save" />
     <string id="ATProfileDelete" text="Delete" />
     <string id="ATNoProfiles" text="Type a name and press Save to keep the settings on screen as a profile." />
@@ -117,7 +118,7 @@
     <string id="ATProfileOverwrite" text="Replace the profile &quot;{NAME}&quot; with the settings on screen?" />
     <string id="ATProfileDeleteTitle" text="Delete profile" />
     <string id="ATProfileDeleteConfirm" text="Delete the profile &quot;{NAME}&quot;?" />
-    <string id="ATProfileDeleteNone" text="Click a saved profile, or type its name, to delete it." />
+    <string id="ATProfileDeleteNone" text="Choose a profile, or type its name, to delete it." />
     <string id="ATProfileDeleted" text="Profile &quot;{NAME}&quot; deleted." />
     <string id="ATYes" text="Yes" />
     <string id="ATNo" text="No" />

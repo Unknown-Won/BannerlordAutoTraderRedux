@@ -113,8 +113,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@SearchRadiusValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@SearchRadiusValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -195,8 +195,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepWagesValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepWagesValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -233,8 +233,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@UseInventorySpaceValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@UseInventorySpaceValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -271,8 +271,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxCapacityValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxCapacityValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -297,13 +297,20 @@
                 <ListPanel Id="OuterList" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Right" VerticalAlignment="Top" StackLayout.LayoutMethod="VerticalTopToBottom">
                   <Children>
 
-                    <!-- Profiles: a name box with Save and Delete, and the saved profiles. Clicking one fills in the settings; Done applies them. -->
+                    <!-- Profiles: a dropdown of saved profiles, and a name box with Save and Delete. Choosing a profile fills in the settings; Done applies them. -->
                     <ListPanel Id="ProfilesHeader" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" HorizontalAlignment="Left" VerticalAlignment="Top" StackLayout.LayoutMethod="VerticalTopToBottom">
                       <Children>
                         <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" Text="@ProfilesText" />
                         <BrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Heading.Divider.Width" SuggestedHeight="2" HorizontalAlignment="Center" MarginTop="8" MarginBottom="!AT.Heading.MarginBottom" Brush="AT.Divider" />
                       </Children>
                     </ListPanel>
+
+                    <!-- Saved profiles: choosing one fills in the settings (Standard.DropdownWithHorizontalControl is the game's own dropdown) -->
+                    <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginBottom="10" IsVisible="@HasProfiles">
+                      <Children>
+                        <Standard.DropdownWithHorizontalControl HorizontalAlignment="Center" Parameter.SelectorDataSource="{ProfileSelector}" Parameter.ShowNextAndPrevious="false" />
+                      </Children>
+                    </Widget>
 
                     <ListPanel Id="ProfileNameRow" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" StackLayout.LayoutMethod="HorizontalLeftToRight">
                       <Children>
@@ -328,15 +335,6 @@
 
                     <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" SuggestedWidth="560" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="10" Brush="SPOptions.OptionName.Text" Text="@NoProfilesText" IsHidden="@HasProfiles" />
 
-                    <GridWidget Id="ProfileList" DataSource="{Profiles}" WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" MarginTop="10" ColumnCount="2" DefaultCellWidth="260" DefaultCellHeight="56" IsVisible="@HasProfiles">
-                      <ItemTemplate>
-                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteLoad" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="250" SuggestedHeight="51" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Header.Tab.Center" IsSelected="@IsSelected">
-                          <Children>
-                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" PositionYOffset="1" MarginLeft="10" MarginRight="10" Brush="Clan.TabControl.Text" Text="@Name"/>
-                          </Children>
-                        </ButtonWidget>
-                      </ItemTemplate>
-                    </GridWidget>
 
                     <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="!AT.Heading.MarginTop" />
 
@@ -413,8 +411,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@BuyThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@BuyThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -451,8 +449,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MinBuyProfitValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MinBuyProfitValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -489,8 +487,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@BuyProfitOverrideValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@BuyProfitOverrideValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -535,8 +533,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@SellThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@SellThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -573,8 +571,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@WeaponsArmorTierValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@WeaponsArmorTierValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -912,8 +910,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepGrainsMinValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepGrainsMinValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -950,8 +948,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepGrainsMaxValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepGrainsMaxValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -988,8 +986,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepConsumablesMinValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepConsumablesMinValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1026,8 +1024,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepConsumablesMaxValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepConsumablesMaxValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1072,8 +1070,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepHardwoodValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepHardwoodValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1110,8 +1108,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@HardwoodBuyThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@HardwoodBuyThresholdValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1156,8 +1154,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepWarMountsValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepWarMountsValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1194,8 +1192,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepSpareMountsValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@KeepSpareMountsValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1232,8 +1230,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxHerdTradePercentValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxHerdTradePercentValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1270,8 +1268,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width.Wide" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxHorseGoldPerTypeValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width.Wide" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@MaxHorseGoldPerTypeValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1428,8 +1426,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortUseInventorySpaceValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortUseInventorySpaceValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1466,8 +1464,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMaxCapacityValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMaxCapacityValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1504,8 +1502,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMaxItemCountValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMaxItemCountValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
@@ -1542,8 +1540,8 @@
                                   </Children>
                                 </SliderWidget>
 
-                                <!-- Click to type a value; Enter applies it -->
-                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMinBuyProfitValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
+                                <!-- Click to type a value; Enter or clicking away applies it -->
+                                <EditableTextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="!AT.Slider.Value.Width" SuggestedHeight="!AT.Slider.Value.Height" MarginLeft="!AT.Slider.Value.MarginLeft" VerticalAlignment="Center" Brush="AT.SliderValue.Text" RealText="@PortMinBuyProfitValueAsString" MaxLength="7" Command.TextEntered="ExecuteApplyTypedValues" Command.FocusLost="ExecuteApplyTypedValues" ClipContents="false" UpdateChildrenStates="true" DoNotPassEventsToChildren="true">
                                   <Children>
                                     <BrushWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="AT.SliderValue.Input" ClipContents="false" />
                                   </Children>
