@@ -1,6 +1,6 @@
 # AutoTrader changelog (2026-10-14)
 
-## Unreleased
+## v1.5.0 (2026-11-08)
 - **Settings profiles:** save the settings on screen under a name and switch between them, for example one for trading and one for fighting. The Profiles section is on the General tab: type a name and press Save, choose a saved profile in the dropdown to load it, then press Done to apply it. Delete removes the profile named in the box. Each profile is a file in `Documents\Mount and Blade II Bannerlord\Configs\AutoTraderProfiles`. The hotkey setting isn't part of a profile.
 - **Typed slider values:** click the number next to any slider to type a value, then press Enter or click elsewhere. Done, switching tabs, presets and saving a profile also apply typed numbers. Type "Inf" or "All" for sliders that have them, and "Off" for "Buy anyway if profit per item is at least".
 - **Log location:** AutoTrader.log is now written to `Documents\Mount and Blade II Bannerlord\Configs\ModLogs`, next to other mods' logs. AutoTraderConfig.xml stays in `Configs`.
