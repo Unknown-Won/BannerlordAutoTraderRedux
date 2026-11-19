@@ -1,5 +1,10 @@
 # AutoTrader changelog (2026-10-14)
 
+## v1.5.1 (2026-11-19)
+- **Translations:** every text AutoTrader shows (menu options, the settings screen, messages) can now be translated. The mod's language files were never loaded before, so edits to `module_strings.xml` had no effect. A new `language_data.xml` registers them, and translations go in their own language folder. See `TRANSLATING.md`.
+- **Messages:** the startup message, the game version warning and the trade error message are now whole sentences with placeholders, so translations can use their own word order.
+- **English texts:** `module_strings.xml` now matches the texts the mod shows, and unused texts were removed.
+
 ## v1.5.0.1 (2026-11-12)
 - **Bannerlord v1.5.7:** target game version is now Bannerlord v1.5.7 with War Sails v1.3.7 (was v1.4.8). The in-game "AutoTrader for v1.4.8" warning no longer shows on v1.5.7.
 

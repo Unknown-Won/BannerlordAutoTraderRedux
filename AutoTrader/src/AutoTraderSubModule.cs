@@ -29,10 +29,9 @@ namespace AutoTrader
 
 		public override void OnGameInitializationFinished(Game game)
 		{
-			string t_text = AutoTraderConfig.UseAltATValue ? " + T" : "";
-			AutoTraderHelpers.PrintMessage(new TextObject("{=ATStartup01}Thanks for using AutoTrader! Press <ALT + A", null)
-				+ t_text
-				+ new TextObject("{=ATStartup02}> to open the settings menu", null).ToString());
+			string hotkey = AutoTraderConfig.UseAltATValue ? "<ALT + A + T>" : "<ALT + A>";
+			AutoTraderHelpers.PrintMessage(new TextObject("{=ATStartup}Thanks for using AutoTrader! Press {HOTKEY} to open the settings menu", null)
+				.SetTextVariable("HOTKEY", hotkey).ToString());
 
 			string fullVersion = ApplicationVersion.FromParametersFile(null).ToString();
 			string[] versionParts = fullVersion.Split('.');
@@ -41,11 +40,9 @@ namespace AutoTrader
 				: fullVersion;
 
 			if (!version.Equals(AutoTraderConfig.AutoTraderGameVersion)){
-				AutoTraderHelpers.PrintMessage(new TextObject("{=ATVersionMismatch01}You are using AutoTrader for ", null).ToString()
-					+ AutoTraderConfig.AutoTraderGameVersion
-					+ new TextObject("{=ATVersionMismatch02} with Bannerlord ", null).ToString() 
-					+ version
-					+ new TextObject("{=ATVersionMismatch03}. If you encounter issues please check the mod page for a fitting version.", null).ToString());
+				AutoTraderHelpers.PrintMessage(new TextObject("{=ATVersionMismatch}You are using AutoTrader for {MOD_GAME_VERSION} with Bannerlord {GAME_VERSION}. If you encounter issues please check the mod page for a fitting version.", null)
+					.SetTextVariable("MOD_GAME_VERSION", AutoTraderConfig.AutoTraderGameVersion)
+					.SetTextVariable("GAME_VERSION", version).ToString());
 			}
 
 			if (AutoTraderConfig.DebugMode)
