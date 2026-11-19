@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  AutoTrader Redux: English texts. This file is also the template for translations.
+  To translate: copy this file into a language folder (for example Languages\TR), set the tag below
+  to that language, and translate only the text="..." values. Keep each id, and keep {WORDS} in braces
+  as they are: the mod fills them in. See TRANSLATING.md.
+-->
 <base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
   <tags>
     <tag language="English" />
   </tags>
   <strings>
-    <string id="ATStartup01" text="Thanks for using AutoTrader! Press &lt;ALT + A" />
-    <string id="ATStartup02" text="&gt; to open the settings menu" />
-    <string id="ATVersionMismatch01" text="You are using AutoTrader for " />
-    <string id="ATVersionMismatch02" text=" with Bannerlord " />
-    <string id="ATVersionMismatch03" text=". If you encounter issues please check the mod page for a fitting version." />
+    <!-- {HOTKEY} becomes <ALT + A> or <ALT + A + T> -->
+    <string id="ATStartup" text="Thanks for using AutoTrader! Press {HOTKEY} to open the settings menu" />
+    <!-- {MOD_GAME_VERSION}: the game version this AutoTrader file is made for, {GAME_VERSION}: the game version being played -->
+    <string id="ATVersionMismatch" text="You are using AutoTrader for {MOD_GAME_VERSION} with Bannerlord {GAME_VERSION}. If you encounter issues please check the mod page for a fitting version." />
+    <string id="ATTradeCrashed" text="My Lord! Something terrible happened to our autotraders! The last we heard of them is:" />
     <!---->
     <string id="ATTrade" text="Automatically trade wares" />
     <string id="ATCaravan" text="I'd like to inspect your wares. (Autotrade)" />
@@ -17,9 +23,8 @@
     <string id="ATManualTradeCargoHold" text="Trade (cargo hold)" />
     <string id="ATManualTradePartyInventory" text="Trade (party inventory)" />
     <!---->
-    <string id="ATConfig" text="AutoTrader Options" />
     <string id="ATOptions" text="AutoTrader Configuration" />
-    <string id="ATLockHint" text="Lock items to prevent them from being sold." />
+    <string id="ATLockHint" text="Note: Lock items to prevent them from being sold." />
     <string id="ATPresets" text="Presets" />
     <string id="ATPreDefault" text="Default" />
     <string id="ATPreSeller" text="Loot Seller" />
@@ -31,11 +36,10 @@
     <string id="ATHeaderSpecial" text="Special Options" />
     <string id="ATHeaderTrade" text="Buy / Sell Options" />
     <!---->
-    <string id="ATShowAdvanced" text="Show advanced settings" />
     <string id="ATSimpleAI" text="Green/red-based trading (improves with trade rumors)" />
     <string id="ATWeightedRadius" text="Weight average price by distance" />
-    <string id="ATBuyThreshold" text="Buy under % of the average sell price" />
-    <string id="ATSellThreshold" text="Sell above % of the average sell price" />
+    <string id="ATBuyThreshold" text="Buy under X% of the average sell price" />
+    <string id="ATSellThreshold" text="Sell above X% of the average sell price" />
     <string id="ATMaxCapacity" text="Maximum % of inventory filled by the same good" />
     <string id="ATKeepGrainsMin" text="Minimum amount of grain to keep" />
     <string id="ATKeepGrainsMax" text="Maximum amount of grain to keep" />
@@ -85,17 +89,17 @@
     <string id="ATHeaderTroopHorses" text="Horses for Troops" />
     <string id="ATMinBuyProfit" text="Minimum profit per 10 weight to buy" />
     <string id="ATBuyProfitOverride" text="Buy anyway if profit per item is at least" />
-    <string id="ATResupply" text="Resupply food to 'resupply consumables' value" />
+    <string id="ATResupply" text="Resupply food to 'keep consumables' value" />
     <!---->
     <string id="ATTradeHorses" text="Trade Pack Horses (TBD)" />
     <string id="ATTradeWeapons" text="Trade Weapons (sells below Tier X)" />
     <string id="ATTradeArmor" text="Trade Armor (sells below Tier X)" />
     <string id="ATTradeGoods" text="Trade Goods" />
     <string id="ATTradeConsumables" text="Trade Consumables" />
-    <string id="ATTradeLivestock" text="Trade Livestock (May cause herding)" />
+    <string id="ATTradeLivestock" text="Trade Livestock" />
     <!---->
     <string id="ATAll" text="All" />
-    <string id="ATInf" text="Inf." />
+    <string id="ATInf" text="Inf" />
     <!---->
     <string id="ATBuy" text="Buy" />
     <string id="ATSell" text="Sell" />
@@ -111,6 +115,7 @@
     <string id="ATProfileDelete" text="Delete" />
     <string id="ATNoProfiles" text="Type a name and press Save to keep the settings on screen as a profile." />
     <string id="ATProfileNoName" text="Type a name for the profile first." />
+    <!-- {NAME}: the profile name -->
     <string id="ATProfileSaved" text="Profile &quot;{NAME}&quot; saved." />
     <string id="ATProfileSaveFailed" text="Couldn't save the profile &quot;{NAME}&quot;." />
     <string id="ATProfileLoadFailed" text="Couldn't read the profile &quot;{NAME}&quot;." />
@@ -124,7 +129,5 @@
     <string id="ATNo" text="No" />
     <!---->
     <string id="ATFleetNotDocked" text="Your fleet is not docked at this port." />
-    <string id="ATNoInventorySpace" text="My Lord! We cannot fit any more goods into our inventory!" />
-    <string id="ATNoFleetSpace" text="My Lord! We cannot load more goods onto our fleet! Keep in mind that we need space for our herd." />
   </strings>
 </base>

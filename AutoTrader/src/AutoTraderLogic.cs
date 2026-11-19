@@ -152,7 +152,7 @@ namespace AutoTrader
             }
             catch (Exception e)
             {
-                AutoTraderHelpers.PrintMessage("My Lord! Something terrible happened to our autotraders! The last we heard of them is:\n" + e.ToString());
+                AutoTraderHelpers.PrintMessage(new TextObject("{=ATTradeCrashed}My Lord! Something terrible happened to our autotraders! The last we heard of them is:", null).ToString() + "\n" + e.ToString());
             }
             finally
             {
